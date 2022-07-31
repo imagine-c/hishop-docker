@@ -1,0 +1,11 @@
+127.0.0.1	localhost
+172.18.0.2	mysql
+172.18.0.3	redis
+172.18.0.4	front
+172.18.0.5	admin
+172.18.0.6	springboot
+172.18.0.7	redisinsight
+172.18.0.8	elasticsearch
+172.18.0.9	kibana
+172.18.0.10	activemq
+172.18.0.11	zookeeper

@@ -1,0 +1,94 @@
+version: '2' 
+services:
+  elasticsearch: 
+    image: elasticsearch:7.12.0
+    container_name: elasticsearch
+    volumes: 
+      - $PWD/elasticsearch/data/:/usr/share/elasticsearch/data:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    networks: 
+     webnet: 
+        ipv4_address: 172.18.0.8
+    ulimits: 
+      nproc: 65535
+    hostname: elasticsearch 
+    mem_limit: 1024m 
+    restart: always 
+    environment: 
+      discovery.type: single-node
+  kibana: 
+    image: kibana:7.12.0
+    container_name: kibana
+    volumes: 
+      - $PWD/kibana/config/kibana.yml:/usr/share/kibana/config/kibana.yml:rw  
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "5601:5601"
+    networks: 
+      webnet: 
+        ipv4_address: 172.18.0.9
+    ulimits: 
+      nproc: 65535
+    hostname: kibana  
+    mem_limit: 1024m 
+    restart: always 
+    environment: 
+      elasticsearch_url: http://elasticsearch:9200
+    depends_on: 
+      - elasticsearch
+  activemq: 
+    image: webcenter/activemq:5.14.3
+    container_name: activemq
+    volumes:
+      - $PWD/activemq/data/:/data/activemq:rw
+      - $PWD/activemq/log/:/var/log/activemq:ro
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "8161:8161"
+      - "61616:61616"
+    networks:
+      webnet:
+        ipv4_address: 172.18.0.10
+    ulimits:
+      nproc: 65535
+    hostname: activemq
+    mem_limit: 1024m
+    restart: always 
+    environment: 
+      ACTIVEMQ_ADMIN_LOGIN: admin 
+      ACTIVEMQ_ADMIN_PASSWORD: 123456
+  zookeeper: 
+    image: zookeeper:3.4.9
+    container_name: zookeeper
+    volumes:
+      - $PWD/zookeeper/data:/data:rw
+      - $PWD/zookeeper/conf:/conf:rw
+      - $PWD/zookeeper/logs:/datalog:rw
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "2181:2181"
+    networks:
+      webnet:
+        ipv4_address: 172.18.0.11
+    ulimits:
+      nproc: 65535
+    hostname: zookeeper
+    mem_limit: 1024m
+    restart: always 
+    environment: 
+      TZ: "Asia/Shanghai"
+networks: 
+  webnet: 
+    driver: bridge 
+    ipam: 
+      driver: default
+      config:
+      - subnet: 172.18.0.0/24
+        gateway: 172.18.0.1

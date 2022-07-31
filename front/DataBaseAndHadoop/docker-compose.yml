@@ -1,0 +1,121 @@
+version: '2' 
+services:
+  mysql: 
+    image: mysql:5.7
+    container_name: mysql
+    volumes: 
+      - $PWD/mysql/mysql-data/:/var/lib/mysql:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "3306:3306"
+    networks: 
+      dbnet: 
+        ipv4_address: 172.18.0.10
+    ulimits: 
+      nproc: 65535
+    hostname: mysql 
+    mem_limit: 1024m 
+    restart: always 
+    environment: 
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_ROOT_HOST: '%'
+    command: [
+          'mysqld',
+          '--innodb-buffer-pool-size=20M',
+          '--character-set-server=utf8',
+          '--collation-server=utf8_general_ci',
+          '--lower-case-table-names=1',
+          '--sql_mode=STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION'
+        ]
+  redis: 
+    image: redis:3.2
+    container_name: redis
+    volumes:
+      - $PWD/redis/redis-data/:/data
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "6379:6379"
+    networks:
+      dbnet:
+        ipv4_address: 172.18.0.11
+    ulimits:
+      nproc: 65535
+    hostname: redis
+    mem_limit: 1024m
+    restart: always   
+  redisinsight: 
+    image: redislabs/redisinsight
+    container_name: redisinsight
+    volumes:
+      - $PWD/redisinsight:/db
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "8001:8001"
+    networks:
+      dbnet:
+        ipv4_address: 172.18.0.15
+    ulimits:
+      nproc: 65535
+    hostname: redisinsight
+    mem_limit: 1024m
+    restart: always  
+  hadoop: 
+      build: $PWD/hadoop
+      container_name: hadoop
+      volumes:
+        - $PWD/hadoop/conf/:/opt/apps/hadoop-2.6.0-cdh5.9.3/etc/hadoop/:rw
+        - $PWD/hadoop/hdfs_datas/:/opt/apps/hadoop-2.6.0-cdh5.9.3/data/temp/:rw
+        - $PWD/hadoop/datas/:/opt/datas/:rw
+        - $PWD/ssh_config:/etc/ssh/ssh_config:rw
+        - $PWD/sshd_config:/etc/ssh/sshd_config:rw
+        - $PWD/hadoop/hue_conf/hue.ini:/opt/apps/hue-3.9.0-cdh5.9.3/desktop/conf/hue.ini:rw
+        - /etc/localtime:/etc/localtime:ro
+        - $PWD/hosts:/etc/hosts:ro
+      ports:
+#        - "20:22"
+        - "9000:9000"
+        - "50070:50070"
+        - "50010:50010"
+        - "50075:50075"
+        - "8088:8088"
+        - "8888:8888"
+      entrypoint: ["sh","-c","/data/startup.sh"] 
+      networks:
+        dbnet:
+          ipv4_address: 172.18.0.13
+      ulimits:
+        nproc: 65535
+      hostname: hadoop
+      mem_limit: 1024m
+      restart: always 
+  nginx_image: 
+      image: nginx:1.8
+      container_name: nginx_image
+      volumes:
+        - $PWD/nginx_image/nginx-conf/nginx.conf:/etc/nginx/nginx.conf:rw 
+        - $PWD/nginx_image/nginx-logs/:/var/log/nginx/:rw 
+        - /etc/localtime:/etc/localtime:ro
+        - $PWD/hosts:/etc/hosts:ro
+      ports:
+        - "88:80"
+      links: 
+        - hadoop
+      networks:
+        dbnet:
+          ipv4_address: 172.18.0.14
+      ulimits:
+        nproc: 65535
+      hostname: ng_img
+      mem_limit: 1024m
+      restart: always            
+networks: 
+  dbnet: 
+    driver: bridge 
+    ipam: 
+      driver: default
+      config:
+      - subnet: 172.18.0.0/24
+        gateway: 172.18.0.1

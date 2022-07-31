@@ -1,0 +1,143 @@
+version: '2' 
+services:
+  admin: 
+    build: $PWD/hishop-admin
+    container_name: hishop-admin
+    volumes: 
+      - $PWD/hishop-admin/hishop-admin.jar:/data/hishop-admin.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8090:8090"
+    networks: 
+     webtool_webnet: 
+        ipv4_address: 172.18.0.12
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-admin 
+    mem_limit: 1024m 
+    #restart: always 
+  content: 
+    build: $PWD/hishop-content
+    container_name: hishop-content
+    volumes: 
+      - $PWD/hishop-content/hishop-content.jar:/data/hishop-content.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8089:8089"
+    networks: 
+     webtool_webnet: 
+        ipv4_address: 172.18.0.13
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-content 
+    mem_limit: 1024m 
+    #restart: always 
+  search: 
+    build: $PWD/hishop-search
+    container_name: hishop-search
+    volumes: 
+      - $PWD/hishop-search/hishop-search.jar:/data/hishop-search.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8082:8082"
+    networks: 
+     webtool_webnet: 
+        ipv4_address: 172.18.0.14
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-search 
+    mem_limit: 1024m 
+    #restart: always 
+  admin-web1: 
+    image: admin_web 
+    container_name: hishop-admin-web1
+    volumes: 
+      - $PWD/hishop-admin-web/hishop-admin-web.jar:/data/hishop-admin-web.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    #ports:
+       #- "8091:8091"
+    networks: 
+     webtool_webnet: 
+        ipv4_address: 172.18.0.15
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-admin-web1 
+    mem_limit: 1024m 
+    #restart: always 
+    depends_on: 
+      - admin
+      - content
+      - search
+  admin-web2: 
+    image: admin_web 
+    container_name: hishop-admin-web2
+    volumes: 
+      - $PWD/hishop-admin-web/hishop-admin-web.jar:/data/hishop-admin-web.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8091:8091"
+    networks: 
+     webtool_webnet: 
+        ipv4_address: 172.18.0.16
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-admin-web2 
+    mem_limit: 1024m 
+    #restart: always 
+    depends_on: 
+      - admin
+      - content
+      - search
+  admin-web3: 
+    image: admin_web 
+    container_name: hishop-admin-web3
+    volumes: 
+      - $PWD/hishop-admin-web/hishop-admin-web.jar:/data/hishop-admin-web.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8091:8091"
+    networks: 
+     webtool_webnet: 
+        ipv4_address: 172.18.0.17
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-admin-web3 
+    mem_limit: 1024m 
+    #restart: always 
+    depends_on: 
+      - admin 
+      - content 
+      - search 
+  nginx-admin: 
+    image: nginx:1.8
+    container_name: nginx-admin
+    volumes: 
+      - $PWD/nginx-admin/nginx-conf/nginx.conf:/etc/nginx/nginx.conf:rw 
+      - $PWD/nginx-admin/nginx-logs/:/var/log/nginx/:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "80:80"
+    networks: 
+      webtool_webnet: 
+        ipv4_address: 172.18.0.18
+    ulimits: 
+      nproc: 65535
+    hostname: nginx-admin 
+    mem_limit: 1024m 
+    restart: always 
+    environment: 
+      TZ: Asia/Shanghai 
+    depends_on: 
+      - admin-web1 
+      - admin-web2 
+      - admin-web3 
+networks:
+  webtool_webnet:
+    external: true

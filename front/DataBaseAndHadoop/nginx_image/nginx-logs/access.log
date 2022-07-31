@@ -1,0 +1,4 @@
+192.168.3.68 - - [19/Jul/2022:11:02:37 +0800] "GET / HTTP/1.1" 200 2144 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+192.168.3.68 - - [19/Jul/2022:11:02:37 +0800] "GET /favicon.ico HTTP/1.1" 404 1376 "http://192.168.3.181:88/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+192.168.3.68 - - [19/Jul/2022:11:03:00 +0800] "GET /user/img/logo.jpg HTTP/1.1" 200 41890 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"
+192.168.3.68 - - [19/Jul/2022:11:06:44 +0800] "GET /user/img/d272ca9a90fa4f67b8e61dc6e5d1d427.jpg HTTP/1.1" 200 44250 "http://192.168.3.181/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.0.0 Safari/537.36"

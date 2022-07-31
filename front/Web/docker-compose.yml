@@ -1,0 +1,144 @@
+version: '2' 
+services:
+  content: 
+    build: $PWD/hishop-content
+    container_name: hishop-content
+    volumes: 
+      - $PWD/hishop-content/hishop-content.jar:/data/hishop-content.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8089:8089"
+    networks: 
+     graduation_dbnet: 
+        ipv4_address: 172.18.0.16
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-content 
+    mem_limit: 1024m 
+    #restart: always 
+  sso: 
+    build: $PWD/hishop-sso
+    container_name: hishop-sso
+    volumes: 
+      - $PWD/hishop-sso/hishop-sso.jar:/data/hishop-sso.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8083:8083"
+    networks: 
+     graduation_dbnet: 
+        ipv4_address: 172.18.0.17
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-sso 
+    mem_limit: 1024m 
+    #restart: always 
+  search: 
+    build: $PWD/hishop-search
+    container_name: hishop-search
+    volumes: 
+      - $PWD/hishop-search/hishop-search.jar:/data/hishop-search.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "8082:8082"
+    networks: 
+     graduation_dbnet: 
+        ipv4_address: 172.18.0.18
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-search 
+    mem_limit: 1024m 
+    #restart: always 
+  front-web1: 
+    image: front_web 
+    container_name: hishop-front-web1
+    volumes: 
+      - $PWD/hishop-front-web/hishop-front-web.jar:/data/hishop-front-web.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "7777:7777"
+    networks: 
+     graduation_dbnet: 
+        ipv4_address: 172.18.0.19
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-front-web1 
+    mem_limit: 1024m 
+    #restart: always 
+    depends_on: 
+      - sso 
+      - content 
+      - search 
+  front-web2: 
+    image: front_web 
+    container_name: hishop-front-web2
+    volumes: 
+      - $PWD/hishop-front-web/hishop-front-web.jar:/data/hishop-front-web.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "7777:7777"
+    networks: 
+     graduation_dbnet: 
+        ipv4_address: 172.18.0.20
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-front-web2 
+    mem_limit: 1024m 
+    #restart: always 
+    depends_on: 
+      - sso 
+      - content 
+      - search 
+  front-web3: 
+    image: front_web 
+    container_name: hishop-front-web3
+    volumes: 
+      - $PWD/hishop-front-web/hishop-front-web.jar:/data/hishop-front-web.jar:rw 
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    # ports:
+      # - "7777:7777"
+    networks: 
+     graduation_dbnet: 
+        ipv4_address: 172.18.0.21
+    ulimits: 
+      nproc: 65535
+    hostname: hishop-front-web3 
+    mem_limit: 1024m 
+    #restart: always 
+    depends_on: 
+      - sso 
+      - content 
+      - search 
+  nginx-front: 
+    image: nginx:1.8
+    container_name: nginx-front
+    volumes: 
+      - $PWD/nginx-front/nginx-conf/nginx.conf:/etc/nginx/nginx.conf:rw 
+      - $PWD/nginx-front/nginx-logs/:/var/log/nginx/:rw 
+      - $PWD/nginx-front/dist/:/data/dist/:rw
+      - /etc/localtime:/etc/localtime:ro
+      - $PWD/hosts:/etc/hosts:ro
+    ports:
+      - "80:80"
+    networks: 
+      graduation_dbnet: 
+        ipv4_address: 172.18.0.22
+    ulimits: 
+      nproc: 65535
+    hostname: nginx-front
+    mem_limit: 1024m 
+    restart: always 
+    environment: 
+      TZ: Asia/Shanghai 
+    depends_on: 
+      - front-web1 
+      - front-web2 
+      - front-web3  
+networks:
+  graduation_dbnet:
+    external: true

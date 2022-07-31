@@ -1,0 +1,234 @@
+ERROR 2022-07-17 16:19:07,162 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 925, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:07,171 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:08,134 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:08,137 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:08,702 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 651, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:08,707 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:09,164 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:09,172 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:09,456 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:09,463 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:09,926 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:09,928 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:10,287 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:10,292 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:12,334 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:12,340 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:15,372 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:15,379 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:15,817 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:15,823 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:16,246 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 651, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:16,252 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:16,614 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 258, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:16,620 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
+ERROR 2022-07-17 16:19:16,965 redisinsight Unknown command error from redis instance:
+Traceback (most recent call last):
+  File "./redisinsight/utils/__init__.py", line 199, in _wrapped_view
+  File "./redisinsight/core/views/decorators.py", line 21, in wrapped_view
+  File "./redisinsight/browser/decorators.py", line 36, in _wrapped_view
+  File "./redisinsight/browser/views.py", line 144, in get_val_details
+  File "./redisinsight/browser/services/api.py", line 165, in get_value_details
+  File "./redisinsight/browser/services/manager.py", line 925, in get
+  File "./redisinsight/browser/services/utils.py", line 31, in is_value_too_large
+  File "./redisinsight/browser/services/utils.py", line 20, in get_memory_usage
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 901, in execute_command
+    return self.parse_response(conn, command_name, **options)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 915, in parse_response
+    response = connection.read_response()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 756, in read_response
+    raise response
+redis.exceptions.ResponseError: unknown command 'MEMORY'
+ERROR 2022-07-17 16:19:16,969 django.request Unknown Status Code: /api/instance/e62f6f95-191f-4e46-ab15-9ed33d894d68/value-details/
